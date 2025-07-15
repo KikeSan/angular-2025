@@ -1,27 +1,19 @@
-import {Component, signal} from '@angular/core';
+import {ChangeDetectionStrategy, Component, signal} from '@angular/core';
+import { RouterOutlet } from '@angular/router';
 
 // @ts-ignore
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   standalone: true,
-  styleUrl: './app.component.css'
+  imports: [RouterOutlet],
+  styleUrl: './app.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent {
   title = 'Kike Sanchez';
-  counter:number = 0;
-  counterSignal = signal(0)
 
-  constructor(){}
-
-  increaseBy(value: number){
-    this.counter += value;
-    this.counterSignal.update(current=> current + value)
-  }
-
-  resetCounter(){
-    this.counter = 0;
-    this.counterSignal.set(0)
+  constructor(){
   }
 
 }
