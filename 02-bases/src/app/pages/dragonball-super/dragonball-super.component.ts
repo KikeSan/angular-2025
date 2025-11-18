@@ -7,27 +7,19 @@ interface Character {
 }
 
 @Component({
-  selector: 'app-dragonball',
-  templateUrl: './dragonball.component.html',
-  styleUrl: './dragonball.component.css'
+  selector: 'app-dragonball-super',
+  templateUrl: './dragonball-super.component.html',
+  styleUrl: './dragonball-super.component.css'
 })
-export class DragonballComponent {
+export class DragonballSuperComponent {
 
-  name = signal('Gohan');
-  power = signal(500);
+  name = signal('');
+  power = signal(0);
 
   characters = signal<Character[]>([
     {id: 1, name: 'Goku', power: 9001},
-    {id: 2, name: 'Vegeta', power: 8000},
-    {id: 3, name: 'Trunks', power: 7000},
-    {id: 4, name: 'Yamcha', power: 500}
+    {id: 2, name: 'Vegeta', power: 8000}
   ]);
-
-  powerClasses = computed(()=>{
-    return{
-      'text-danger': true,
-    }
-  })
 
   addCharacter(){
    if(!this.name() || !this.power || this.power() <= 0){
